@@ -1,0 +1,28 @@
+name: AWS Glue ETL Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Validate Files
+        run: |
+          python --version
+          ls -l
+
+      - name: Deploy AWS Glue Job
+        run: |
+          echo "Deploying AWS Glue ETL Job..."
